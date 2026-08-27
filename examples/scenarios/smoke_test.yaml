@@ -1,0 +1,22 @@
+name: Smoke Test & Appearance Audit
+description: Basic UI smoke test checking light/dark mode and navigation sheets
+platform: ios
+
+steps:
+  - name: 01_home_light
+    description: Initial home view in Light Mode
+    actions:
+      - action: set_appearance
+        mode: light
+      - action: sleep
+        duration: 1.0
+    assert_screen: Home View (Light)
+
+  - name: 02_home_dark
+    description: Switch to Dark Mode and check contrast
+    actions:
+      - action: set_appearance
+        mode: dark
+      - action: sleep
+        duration: 1.0
+    assert_screen: Home View (Dark)

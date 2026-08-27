@@ -1,0 +1,65 @@
+name: Autonomous VLM Visual QA
+
+on:
+  pull_request:
+    paths:
+      - "**/*.swift"
+      - "**/*.kt"
+      - "**/*.dart"
+      - "examples/scenarios/**"
+  workflow_dispatch:
+
+jobs:
+  visual-qa:
+    name: Run Autonomous Visual QA
+    runs-on: macos-15
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Dependencies
+        run: |
+          pip install -e ".[all]"
+
+      - name: Run Visual QA Scenario
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python -m cli.main scenario --file examples/scenarios/smoke_test.yaml --output-dir reports
+
+      - name: Post Summary to PR Comment
+        if: github.event_name == "pull_request"
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require("fs");
+            const summaryPath = "reports/summary.md";
+            if (fs.existsSync(summaryPath)) {
+              const summary = fs.readFileSync(summaryPath, "utf8");
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: "### 🤖 Autonomous Visual QA Report\n\n" + summary
+              });
+            }
+
+      - name: Upload HTML & Image Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-qa-report
+          path: reports/
+          retention-days: 14

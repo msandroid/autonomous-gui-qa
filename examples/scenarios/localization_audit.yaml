@@ -1,0 +1,13 @@
+name: Multi-language Localization Audit
+description: Audits UI elements across languages to catch text clipping and overflow
+platform: ios
+
+steps:
+  - name: 01_lang_picker_sheet
+    description: Open language picker sheet
+    actions:
+      - action: tap
+        coordinates: [750, 800]
+      - action: sleep
+        duration: 1.5
+    assert_screen: Language Picker Sheet

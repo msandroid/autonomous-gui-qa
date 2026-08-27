@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autonomous-gui-qa"
+version = "0.1.0"
+description = "Autonomous Mobile GUI Exploration & VLM-Driven Visual QA System"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "msandroid" }
+]
+keywords = ["vlm", "gui-agent", "mobile-testing", "ios", "visual-qa", "hotl"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Testing",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "pydantic>=2.0.0",
+    "pyyaml>=6.0",
+    "pillow>=10.0.0",
+    "jinja2>=3.1.0",
+]
+
+[project.optional-dependencies]
+gemini = ["google-genai>=0.1.0"]
+openai = ["openai>=1.0.0"]
+anthropic = ["anthropic>=0.18.0"]
+all = [
+    "google-genai>=0.1.0",
+    "openai>=1.0.0",
+    "anthropic>=0.18.0",
+]
+
+[project.scripts]
+gui-agent = "cli.main:main"
+autonomous-qa = "cli.main:main"
