@@ -4,17 +4,17 @@
 
 ---
 
-## 🌟 Key Highlights
+## Key Highlights
 
-- 👁️ **VLM Visual Oracle**: Automatically detects text truncation, layout clipping, z-index overlaps, dark mode contrast issues, and placeholder leaks without writing brittle assertions.
-- 🤖 **Autonomous Agent Loop**: Operates mobile applications naturally via natural language goals (Perceive -> Reason -> Act -> Observe).
-- 📱 **Multi-Platform Drivers**: Native support for iOS Simulators (`simctl` + System Events) and Android Devices/Emulators (`adb`).
-- 🎨 **Visual Annotations**: Bounding boxes with severity labels generated on screenshots using Pillow.
-- 📊 **HOTL (Human-on-the-Loop) Reporting**: Interactive HTML reports and automatic GitHub Actions PR comments.
+- **VLM Visual Oracle**: Automatically detects text truncation, layout clipping, z-index overlaps, dark mode contrast issues, and placeholder leaks without writing brittle assertions.
+- **Autonomous Agent Loop**: Operates mobile applications naturally via natural language goals (Perceive -> Reason -> Act -> Observe).
+- **Multi-Platform Drivers**: Native support for iOS Simulators (`simctl` + System Events) and Android Devices/Emulators (`adb`).
+- **Visual Annotations**: Bounding boxes with severity labels generated on screenshots using Pillow.
+- **HOTL (Human-on-the-Loop) Reporting**: Interactive HTML reports and automatic GitHub Actions PR comments.
 
 ---
 
-## 🚀 Quick Setup
+## Quick Setup
 
 ```bash
 # Clone & install
@@ -28,7 +28,7 @@ export GEMINI_API_KEY="your-gemini-key"
 
 ---
 
-## 🕹️ CLI Usage
+## CLI Usage
 
 ### 1. Run Autonomous Goal
 ```bash
@@ -54,7 +54,7 @@ python -m cli.main inspect \
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 autonomous-gui-qa/
@@ -71,5 +71,5 @@ autonomous-gui-qa/
 
 ---
 
-## 📄 License
+## License
 MIT License.
