@@ -69,4 +69,4 @@ class AndroidDeviceDriver(BaseDeviceDriver):
 
     def set_appearance(self, mode: str) -> None:
         val = "yes" if mode.lower() == "dark" else "no"
-        self._adb_cmd(f"shell "cmd uimode night {val}"")
+        self._adb_cmd(f"shell \"cmd uimode night {val}\"")

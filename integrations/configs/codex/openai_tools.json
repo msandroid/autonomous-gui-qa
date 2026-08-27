@@ -1,0 +1,236 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "run_autonomous_exploration",
+      "description": "Runs an autonomous Mobile GUI Agent to achieve a natural language goal on iOS/Android.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "type": "string",
+            "description": "Goal for the agent (e.g. Change target language to Spanish)"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android"
+            ],
+            "default": "ios"
+          },
+          "bundle_id": {
+            "type": "string",
+            "description": "App bundle ID (e.g. Translate.Blue)"
+          },
+          "max_steps": {
+            "type": "integer",
+            "default": 10
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "run_scenario",
+      "description": "Executes a declarative YAML test scenario and generates a visual QA report.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "scenario_file": {
+            "type": "string",
+            "description": "Path to the scenario YAML file"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android"
+            ],
+            "default": "ios"
+          },
+          "output_dir": {
+            "type": "string",
+            "default": "reports"
+          }
+        },
+        "required": [
+          "scenario_file"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "mobile_screenshot",
+      "description": "Takes a screenshot of the connected iOS Simulator or Android device.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "default": "screenshot.png"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android"
+            ],
+            "default": "ios"
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "vlm_visual_audit",
+      "description": "Audits a mobile screenshot using VLM for text truncation, layout clipping, contrast, and UX defects.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "image_path": {
+            "type": "string",
+            "description": "Absolute path to screenshot image"
+          },
+          "context_prompt": {
+            "type": "string",
+            "description": "Optional context about expected state"
+          }
+        },
+        "required": [
+          "image_path"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "mobile_tap",
+      "description": "Taps on the mobile screen at normalized coordinates (0-1000).",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer",
+            "description": "X coordinate (0-1000)"
+          },
+          "y": {
+            "type": "integer",
+            "description": "Y coordinate (0-1000)"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android"
+            ],
+            "default": "ios"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "mobile_type",
+      "description": "Types text into the active mobile focus/input field.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text string to type"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android"
+            ],
+            "default": "ios"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "mobile_swipe",
+      "description": "Performs a directional swipe on the mobile device.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "direction": {
+            "type": "string",
+            "enum": [
+              "UP",
+              "DOWN",
+              "LEFT",
+              "RIGHT"
+            ]
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android"
+            ],
+            "default": "ios"
+          }
+        },
+        "required": [
+          "direction"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "mobile_set_appearance",
+      "description": "Switches the mobile OS appearance between light and dark mode.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "light",
+              "dark"
+            ]
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "ios",
+              "android"
+            ],
+            "default": "ios"
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      }
+    }
+  }
+]

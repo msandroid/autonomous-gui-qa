@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "autonomous-gui-qa": {
+      "command": "python",
+      "args": ["-m", "autonomous_gui_qa.integrations.mcp_server"]
+    }
+  }
+}

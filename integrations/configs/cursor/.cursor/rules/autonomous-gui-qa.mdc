@@ -1,0 +1,12 @@
+---
+description: Autonomous Mobile GUI Exploration, VLM Visual QA, and Self-Healing Testing
+globs: ["**/*.swift", "**/*.kt", "**/*.dart", "**/scenarios/**"]
+alwaysApply: false
+---
+
+# Autonomous GUI QA Rule
+
+When modifying mobile UI components (SwiftUI / UIKit / Jetpack Compose / Flutter):
+1. Use `autonomous_gui_qa` MCP tools or CLI to verify screen rendering and state transitions.
+2. If visual defects (text truncation, overlapping, contrast issues) are detected, inspect the annotated screenshot and patch the corresponding View code.
+3. Verify changes with compile check and regression scenario re-run.
